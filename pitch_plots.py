@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 wwrem_p_gdp = pd.read_csv('world_economic_indicators.csv')
+#gini_coeff = pd.read.cs(Gini_Coefficient.csv)
 
 #Limiting to relevant data
 first_4_columns =wwrem_p_gdp.iloc[:, 0:4]
