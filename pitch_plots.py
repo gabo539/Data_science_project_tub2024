@@ -80,13 +80,13 @@ cbar = plt.colorbar(sc)
 cbar.set_label('Gini Coefficient')
 
 # Adding labels and title
-plt.title('GDP per Capita (PPP) vs Personal Remittances')
+plt.title('GDP per Capita (PPP) vs Personal Remittances in 1995')
 plt.xlabel('Personal Remittances (% of GDP)')
 plt.ylabel('GDP per Capita (PPP)')
 
 # Setting axis limits
-plt.ylim(0, 45000)
-plt.xlim(0, final_merge_95_tidy['Personal remittances, received (% of GDP)'].max() * 0.3)
+plt.ylim(0, 50000)
+plt.xlim(0, 35)
 
 # Adding grid
 plt.grid(True)
@@ -94,7 +94,40 @@ plt.grid(True)
 # Show plot
 plt.show()
 
+#PLOT 2.1
+# Convert 'giniCIA' column to numeric if it's not already
+final_merge_15_tidy['giniCIA'] = pd.to_numeric(final_merge_15_tidy['giniCIA'], errors='coerce')
 
+# Plotting
+plt.figure(figsize=(12, 8))
+
+# Scatter plot with color mapping based on Gini coefficient
+sc = plt.scatter(final_merge_15_tidy['Personal remittances, received (% of GDP)'],
+                 final_merge_15_tidy['GDP per capita (PPP)'],
+                 c=final_merge_15_tidy['giniCIA'],
+                 cmap='inferno',  # Choose a sequential colormap
+                 #edgecolors='k',  # Add black edgecolors for better visibility
+                 alpha=0.8  # Adjust transparency
+                 )
+
+# Adding color bar
+cbar = plt.colorbar(sc)
+cbar.set_label('Gini Coefficient')
+
+# Adding labels and title
+plt.title('GDP per Capita (PPP) vs Personal Remittances in 2015')
+plt.xlabel('Personal Remittances (% of GDP)')
+plt.ylabel('GDP per Capita (PPP)')
+
+# Setting axis limits
+plt.ylim(0, 50000)
+plt.xlim(0, 35)
+
+# Adding grid
+plt.grid(True)
+
+# Show plot
+plt.show()
 
 
 
